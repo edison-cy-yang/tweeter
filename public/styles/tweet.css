@@ -1,0 +1,25 @@
+article.tweet {
+  text-align: left;
+  border: solid 5px black;
+}
+
+article.tweet header {
+  
+}
+
+article.tweet .avatar {
+  height: 80px;
+  width: 80px;
+  margin: 10px;
+  vertical-align: middle;
+}
+
+article.tweet .avatar img {
+  height: 100%;
+  width: 100%;
+}
+
+article.tweet header span {
+  vertical-align: middle;
+}
+
