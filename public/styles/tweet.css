@@ -1,9 +1,23 @@
+.tweet-container {
+  margin-bottom: 10px;
+}
+
 article.tweet {
   text-align: left;
   border: solid 5px black;
 }
 
+article.tweet:hover {
+  box-shadow: 5px 10px grey;
+}
+
+article.tweet:hover .username{
+  color: purple;
+}
+
 article.tweet header {
+  display: flex;
+  justify-content: space-between;
 }
 
 article.tweet .avatar {
@@ -23,15 +37,13 @@ article.tweet header .name {
 }
 
 article.tweet header .username {
-  float: right;
   vertical-align: middle;
   font-size: 20px;
   color: #f4f1ec;
+  margin-top: 25px;
+  margin-right: 10px;
 }
 
-article.tweet header .username:hover {
-  color: red;
-}
 article.tweet p {
   padding: 10px;
   margin: 10px;
