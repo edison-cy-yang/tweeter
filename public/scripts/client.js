@@ -10,7 +10,7 @@ const escape =  function(str) {
 };
 
 const createTweetElement = function(tweet) {
- const tweetElement = `
+  const tweetElement = `
   <article class="tweet">
     <header>
       <div>
@@ -53,7 +53,7 @@ const createTweet = function() {
     const length = tweetContent.val().length;
     if (tweetContent.val() === "") {
       $('.new-tweet .error-message').html("Your tweet is empty!");
-      $('.new-tweet .error-message').css("visibility", "visible");     
+      $('.new-tweet .error-message').css("visibility", "visible");
       return;
     } else if (length > 140) {
       $('.new-tweet .error-message').html("Tweet over 140 characters!");
@@ -73,7 +73,7 @@ const createTweet = function() {
     })
     .then(function(data) {
       renderTweets([data[data.length - 1]]);
-    });   
+    });
   });
 };
 
