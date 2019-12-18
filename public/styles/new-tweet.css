@@ -9,10 +9,13 @@
   font-family: 'Bungee', cursive;
   color: #FFFFFF;
   background-color: #4056A1;
-  float: left;
 }
 
 .new-tweet .counter {
   font-family: 'Bungee', cursive;
-  float: right;
+}
+
+.new-tweet-footer {
+  display: flex;
+  justify-content: space-between;
 }
