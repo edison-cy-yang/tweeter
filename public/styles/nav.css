@@ -7,12 +7,15 @@ nav {
   z-index: 1;
   color: #FFFFFF;
   padding: 1.5em;
+  display: flex;
+  justify-content: space-between;
 }
 
 nav span {
   font-family: 'Bungee', cursive;
 }
 
-nav p {
-  float: right;
+.fa-angle-double-down:hover {
+  color: orange;
+  cursor: pointer;
 }
