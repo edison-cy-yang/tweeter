@@ -3,6 +3,12 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const createTweetElement = function(tweet) {
  const tweetElement = `
   <article class="tweet">
@@ -15,7 +21,7 @@ const createTweetElement = function(tweet) {
         <span>${tweet.user.handle}</span>
       </div>              
     </header>
-    <p>${tweet.content.text}</p>
+    <p>${escape(tweet.content.text)}</p>
     <footer>
       <div class="timestamp">
         <span>${tweet.created_at}</span>
@@ -29,14 +35,14 @@ const createTweetElement = function(tweet) {
   </article>
  `;
   return tweetElement;
-}
+};
 
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
     const $tweet = createTweetElement(tweet);
     $('.tweet-container').prepend($tweet);
   }
-}
+};
 
 const createTweet = function() {
   const form = $('.new-tweet form');
@@ -72,42 +78,6 @@ const loadTweets = function() {
 };
 
 $(document).ready(function() {
-  // const tweetData = [
-  //   {
-  //     "user": {
-  //       "name": "Newton",
-  //       "avatars": "https://i.imgur.com/73hZDYK.png"
-  //       ,
-  //       "handle": "@SirIsaac"
-  //     },
-  //     "content": {
-  //       "text": "If I have seen further it is by standing on the shoulders of giants"
-  //     },
-  //     "created_at": 1461116232227
-  //   },
-  //   {
-  //     "user": {
-  //       "name": "Descartes",
-  //       "avatars": "https://i.imgur.com/nlhLi3I.png",
-  //       "handle": "@rd" },
-  //     "content": {
-  //       "text": "Je pense , donc je suis"
-  //     },
-  //     "created_at": 1461113959088
-  //   },
-  //   {
-  //     "user": {
-  //       "name": "Edison",
-  //       "avatars": "images/profile-hex.png",
-  //       "handle": "@ed" },
-  //     "content": {
-  //       "text": "this is my tweet"
-  //     },
-  //     "created_at": 1461113959088
-  //   }
-  // ]
-  
-  // renderTweets(tweetData);
   loadTweets();
   createTweet();
 });
