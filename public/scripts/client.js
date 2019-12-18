@@ -77,7 +77,16 @@ const loadTweets = function() {
   });
 };
 
+const scrollToTop = function() {
+  $('.new-tweet-btn').on('click', function(event) {
+    $('.new-tweet').toggle(100, function() {
+      $('#tweet-text').focus();
+    });
+  });
+};
+
 $(document).ready(function() {
   loadTweets();
   createTweet();
+  scrollToTop();
 });
