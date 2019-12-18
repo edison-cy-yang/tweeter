@@ -1,10 +1,13 @@
 .tweet-container {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 article.tweet {
   text-align: left;
   border: solid 5px black;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 article.tweet:hover {
