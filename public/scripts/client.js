@@ -68,6 +68,7 @@ const createTweet = function() {
     .then(function() {
       //clear the content of the tweet upon successful submission of tweet
       $('.new-tweet textarea').val("");
+      $('.new-tweet .counter').html("140");
       return $.ajax('/tweets/', { method: 'GET' });
     })
     .then(function(data) {
@@ -95,8 +96,18 @@ const toggleNewTweet = function() {
   });
 };
 
+const scrollTop = function() {
+  $('.scroll-to-top').on('click', function(event) {
+    $('html').stop().animate({
+      scrollTop: $("#tweet-text").offset().top - $("nav").outerHeight()
+    }, 500);
+    $("#tweet-text").focus();
+  });
+};
+
 $(document).ready(function() {
   loadTweets();
   createTweet();
   toggleNewTweet();
+  scrollTop();
 });
