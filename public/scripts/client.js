@@ -72,8 +72,32 @@ $(document).ready(function() {
         "text": "Je pense , donc je suis"
       },
       "created_at": 1461113959088
+    },
+    {
+      "user": {
+        "name": "Edison",
+        "avatars": "images/profile-hex.png",
+        "handle": "@ed" },
+      "content": {
+        "text": "this is my tweet"
+      },
+      "created_at": 1461113959088
     }
   ]
   
   renderTweets(tweetData);
+
+  const form = $('.new-tweet form');
+  form.on('submit', function(event) {
+    console.log('submitted...performing ajax call');
+    event.preventDefault();
+    const inputData = $(this).serialize();
+    $.ajax('/tweets/', {
+      method: 'POST',
+      data: inputData
+    })
+    .then(function(data) {
+      console.log(data);
+    });
+  });
 });
