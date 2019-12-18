@@ -19,3 +19,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+.new-tweet .error-message {
+  color: #D8000C;
+  background-color: #FFD2D2;
+  visibility: hidden;
+}

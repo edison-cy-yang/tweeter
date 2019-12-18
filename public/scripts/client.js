@@ -48,13 +48,17 @@ const createTweet = function() {
   const form = $('.new-tweet form');
   form.on('submit', function(event) {
     event.preventDefault();
+    $('.new-tweet .error-message').css("visibility", "hidden");
     const tweetContent = $('.new-tweet textarea');
     const length = tweetContent.val().length;
     if (tweetContent.val() === "") {
-      alert("Your tweet is empty!");
+      $('.new-tweet .error-message').html("Your tweet is empty!");
+      $('.new-tweet .error-message').css("visibility", "visible");     
       return;
     } else if (length > 140) {
-      alert("Your tweet is too long!");
+      $('.new-tweet .error-message').html("Tweet over 140 characters!");
+      $('.new-tweet .error-message').css("visibility", "visible");
+      return;
     }
     const inputData = $(this).serialize();
     $.ajax('/tweets/', {
@@ -62,11 +66,13 @@ const createTweet = function() {
       data: inputData
     })
     .then(function() {
-      $.ajax('/tweets/', { method: 'GET' })
-      .then(function(data) {
-        renderTweets([data[data.length - 1]]);
-      });
-    });
+      //clear the content of the tweet upon successful submission of tweet
+      $('.new-tweet textarea').val("");
+      return $.ajax('/tweets/', { method: 'GET' });
+    })
+    .then(function(data) {
+      renderTweets([data[data.length - 1]]);
+    });   
   });
 };
 
@@ -77,8 +83,12 @@ const loadTweets = function() {
   });
 };
 
-const scrollToTop = function() {
+const toggleNewTweet = function() {
   $('.new-tweet-btn').on('click', function(event) {
+    // $('html').stop().animate({
+    //   scrollTop: $("#tweet-text").offset().top - $("nav").outerHeight()
+    // }, 500);
+    // $("#tweet-text").focus();
     $('.new-tweet').toggle(100, function() {
       $('#tweet-text').focus();
     });
@@ -88,5 +98,5 @@ const scrollToTop = function() {
 $(document).ready(function() {
   loadTweets();
   createTweet();
-  scrollToTop();
+  toggleNewTweet();
 });
