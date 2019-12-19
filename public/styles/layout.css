@@ -41,3 +41,26 @@ body {
    bottom: 0;
    right: 0;
  }
+
+ /* Tablet Styles */
+@media only screen and (min-width: 768px) {
+  body header.profile {
+    width: 28%;
+    float: left;
+    margin: 20px;
+  }
+  body header.profile img.avatar {
+    width: 200px;
+    height: 200px;
+  }
+  body main.container {
+    width: 58%;
+    margin: 20px;
+    float: right;
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 1024px) {
+
+}
