@@ -24,7 +24,7 @@ const createTweetElement = function(tweet) {
     <p>${escape(tweet.content.text)}</p>
     <footer>
       <div class="timestamp">
-        <span>${tweet.created_at}</span>
+        <span>${new Date(tweet.created_at)}</span>
       </div>  
       <div class="icons">
         <i class="fa fa-flag"></i>
@@ -86,10 +86,8 @@ const loadTweets = function() {
 
 const toggleNewTweet = function() {
   $('.new-tweet-btn').on('click', function(event) {
-    // $('html').stop().animate({
-    //   scrollTop: $("#tweet-text").offset().top - $("nav").outerHeight()
-    // }, 500);
-    // $("#tweet-text").focus();
+    event.stopPropagation();
+    console.log("toggled");
     $('.new-tweet').toggle(100, function() {
       $('#tweet-text').focus();
     });
@@ -99,15 +97,35 @@ const toggleNewTweet = function() {
 const scrollTop = function() {
   $('.scroll-to-top').on('click', function(event) {
     $('html').stop().animate({
-      scrollTop: $("#tweet-text").offset().top - $("nav").outerHeight()
+      scrollTop: $(".container").offset().top - $("nav").outerHeight()
     }, 500);
     $("#tweet-text").focus();
   });
 };
 
+// hides the create new tweet toggle and show the bottom scroll to top button when user starts scrolling
+// down from top. Hides the bottom scroll to top button and show the create new tweet toggle when user
+// scrolls to the top
+const toggleNavButtons = function() {
+  let lastScrollTop = 0;
+  $(window).scroll(function(event){
+    let st = $(this).scrollTop();
+    if (st > lastScrollTop){
+      $('.scroll-to-top').show();
+      $('div.new-tweet-btn').hide();
+    } else if (st === 0) {
+        $('div.new-tweet-btn').show();
+        $('.scroll-to-top').hide();
+      }
+    lastScrollTop = st;
+  });
+};
+
 $(document).ready(function() {
+  $('.scroll-to-top').hide();
   loadTweets();
   createTweet();
   toggleNewTweet();
   scrollTop();
+  toggleNavButtons();
 });

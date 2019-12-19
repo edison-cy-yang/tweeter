@@ -40,7 +40,14 @@ body {
    z-index: 1;
    bottom: 0;
    right: 0;
+   font-size: 50px;
+   margin: 5px;
+   color: #4056A1;
  }
+
+ .scroll-to-top:hover {
+  cursor:pointer;
+}
 
  /* Tablet Styles */
 @media only screen and (min-width: 768px) {
