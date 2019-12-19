@@ -48,11 +48,14 @@ body {
     width: 28%;
     float: left;
     margin: 20px;
+    background-color: #3b5998;
   }
+
   body header.profile img.avatar {
-    width: 200px;
-    height: 200px;
+    width: 75%;
+    height: 75%;
   }
+
   body main.container {
     width: 58%;
     margin: 20px;
