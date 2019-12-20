@@ -8,6 +8,12 @@ Currently the application only uses in-memory database.
 
 Users can create a new tweet, which should be dynamically updated onto the page. There are some toggle animation on mouse scroll. Media query is used to enable a mobile browser friendly view.
 
+## Screenshots
+
+!["Screenshot of the app in mobile view"](https://github.com/edison-cy-yang/tweeter/blob/master/public/images/mobile%20view.png)
+
+!["Screenshot of the app in desktop view"](https://github.com/edison-cy-yang/tweeter/blob/master/public/images/Desktop%20view.png)
+
 ## Getting Started
 
 1. Fork this repository, then clone your fork of this repository.
