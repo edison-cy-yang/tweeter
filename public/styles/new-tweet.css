@@ -1,5 +1,6 @@
 .new-tweet textarea {
   border: none;
+  outline: none;
   border-bottom: solid 5px black;
   background-color: inherit;
   width: 100%;
